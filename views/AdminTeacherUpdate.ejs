@@ -195,7 +195,7 @@
             </li>
         </ul>
       </div>
-		<div class="container-login100">
+		<div class="container-login100" style="width:900px;margin-left: 100px">
 			<div class="wrap-login101">
 				<div class="login100-form-title" style="background-image: url(/images/unnamed.jpg);">
 					<span class="login100-form-title-1">
@@ -203,48 +203,61 @@
 					</span>
 				</div>
 
-				<form class="login101-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
-						<input class="input100" type="text" name="userId" disabled placeholder="ID">
-						<span class="focus-input100"></span>
-					</div>
+				<form method="POST" class="login101-form validate-form">
+          <div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
+            <input class="input100" type="text" name="userid" placeholder="Enter Faculty ID" value="<%= teacher.userid%>">
+            <span class="focus-input100"></span>
+            <%if(error.userid){%>
+              <b style="color: red;"><%= error.userid.msg%></b>
+            <%}%>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "First Name is required">
-						<input class="input100" type="text" name="fname" placeholder="Enter First Name">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="wrap-input100 validate-input m-b-18" data-validate = "First Name is required">
+            <input class="input100" type="text" name="fname" placeholder="Enter First Name" value="<%= teacher.fname%>">
+            <span class="focus-input100"></span>
+            <%if(error.fname){%>
+              <b style="color: red;"><%= error.fname.msg%></b>
+            <%}%>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Last Name is required">
-						<input class="input100" type="text" name="lname" placeholder="Enter Last Name">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="wrap-input100 validate-input m-b-26" data-validate="Last Name is required">
+            <input class="input100" type="text" name="lname" placeholder="Enter Last Name" value="<%= teacher.lname%>">
+            <span class="focus-input100"></span>
+            <%if(error.lname){%>
+              <b style="color: red;"><%= error.lname.msg%></b>
+            <%}%>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
-						<input class="input100" type="text" name="email" disabled placeholder="EMAIL">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
+            <input class="input100" type="text" name="email" placeholder="Enter Valid Email" value="<%= teacher.email%>">
+            <span class="focus-input100"></span>
+            <%if(error.email){%>
+              <b style="color: red;"><%= error.email.msg%></b>
+            <%}%>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
-						<input class="input100" type="text" name="education" placeholder="Enter Educational Background">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="wrap-input100 validate-input m-b-18" data-validate = "Contact No. is required">
+            <input class="input100" type="text" name="contact" placeholder="Enter Contact Number" value="<%= teacher.contact%>">
+            <span class="focus-input100"></span>
+            <%if(error.contact){%>
+              <b style="color: red;"><%= error.contact.msg%></b>
+            <%}%>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Contact No. is required">
-						<input class="input100" type="text" name="phnNo" placeholder="Enter Contact Number">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="wrap-input100 validate-input m-b-18" data-validate = "Department Name is required">
+            <input class="input100" type="text" name="dept" placeholder="Enter Department" value="<%= teacher.dept%>">
+            <span class="focus-input100"></span>
+            <%if(error.dept){%>
+              <b style="color: red;"><%= error.dept.msg%></b>
+            <%}%>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Department is required">
-						<input class="input100" type="text" name="dept" placeholder="Enter Department">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div id="login100-form-Btn">
-						<button class="login101-form-btn">
-							Update
-						</button>
-					</div>
-				</form>
+          <div id="login100-form-Btn">
+            <button type="submit" class="login101-form-btn">
+              Update
+            </button>
+          </div>
+        </form>
 			</div>
 		</div>
 	</div>

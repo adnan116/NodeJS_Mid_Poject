@@ -244,19 +244,24 @@
                           <th scope="col" class="border-0">Department</th>
                           <th scope="col" class="border-0">Registration Date</th>
                           <th scope="col" class="border-0">Account Status</th>
+                          <th scope="col" class="border-0">Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <% for(var i=0; i < teacherlist.length; i++){ %>
 				            <tr>
-				              <td><%= teacherlist[i].userid %></td>
-				              <td><%= teacherlist[i].fname %></td>
-				              <td><%= teacherlist[i].lname %></td>
-				              <td><%= teacherlist[i].email %></td>
-				              <td><%= teacherlist[i].contact %></td>
-				              <td><%= teacherlist[i].dept %></td>
-				              <td><%= teacherlist[i].regDate %></td>
-				              <td><%= teacherlist[i].status %></td>
+				              	<td><%= teacherlist[i].userid %></td>
+				              	<td><%= teacherlist[i].fname %></td>
+					            <td><%= teacherlist[i].lname %></td>
+					            <td><%= teacherlist[i].email %></td>
+					            <td><%= teacherlist[i].contact %></td>
+					            <td><%= teacherlist[i].dept %></td>
+					            <td><%= teacherlist[i].regDate %></td>
+					            <td><%= teacherlist[i].status %></td>
+					            <td>
+									<a href="/AdminTeacherDetails/AdminTeacherUpdate/<%= teacherlist[i].id %>">Update</a> | 
+									<a href="/AdminTeacherDetails/AdminTeacherDelete/<%= teacherlist[i].id %>">Remove</a>  
+								</td>
 						    </tr>
 						<% } %>
                       </tbody>

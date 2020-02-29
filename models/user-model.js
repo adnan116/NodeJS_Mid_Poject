@@ -21,5 +21,16 @@ module.exports ={
 				callback(false);
 			}
 		});
-	}
+	},
+
+	addUser: function(user, callback){
+		var sql = "insert into login values(?,?,?,?)";
+		db.execute(sql, [null, user.userid, user.password, user.role], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 }

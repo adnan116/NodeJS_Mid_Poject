@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var teacherModel   = require.main.require('./models/teacher-model');
+var userModel   = require.main.require('./models/user-model');
 const { check, validationResult } = require('express-validator/check');
 
 
@@ -19,7 +20,8 @@ router.get('/', [
   check('lname', 'Last Name is required').isEmpty(),
   check('email', 'Email is not valid').isEmpty(),
   check('contact', 'Contact No is required').isEmpty(),
-  check('dept', 'Department Name is required').isEmpty()
+  check('dept', 'Department Name is required').isEmpty(),
+  check('pass', 'Password is required').isEmpty()
   ] ,function(req,res){
   	var errors = validationResult(req);
     console.log('Teacher add requested!');
@@ -33,7 +35,8 @@ router.post('/', [
   check('lname', 'Last Name is required').not().isEmpty(),
   check('email', 'Email is not valid').not().isEmpty().isEmail(),
   check('contact', 'Contact No is required').not().isEmpty(),
-  check('dept', 'Department Name is required').not().isEmpty()
+  check('dept', 'Department Name is required').not().isEmpty(),
+  check('pass', 'Password is required').not().isEmpty()
   ], function(req, res){
 	
 	var today = new Date();
@@ -47,7 +50,9 @@ router.post('/', [
 		contact: req.body.contact,
 		dept: req.body.dept,
 		regDate: sysDate,
-		status: 'active'
+		status: 'active',
+		password: req.body.pass,
+		role: 'teacher'
 	};
 
 	var errors = validationResult(req);
@@ -58,7 +63,14 @@ router.post('/', [
 		teacherModel.addTeacher(user, function(status){
 		console.log(status);
 		if (status) {
-			res.redirect('/AdminTeacherDetails');
+			userModel.addUser(user, function(status){
+			console.log(status);
+			if (status) {
+				res.redirect('/AdminTeacherDetails');
+			}else{
+				res.redirect('/AdminTeacherReg');
+			}
+		});
 		}else{
 			res.redirect('/AdminTeacherReg');
 		}

@@ -244,6 +244,14 @@
             <%}%>
 					</div>
 
+          <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+            <input class="input100" type="password" name="pass" placeholder="Enter This User Password">
+            <span class="focus-input100"></span>
+            <%if(error.pass){%>
+              <b style="color: red;"><%= error.pass.msg%></b>
+            <%}%>
+          </div>
+
 					<div id="login100-form-Btn">
 						<button type="submit" class="login101-form-btn">
 							Register

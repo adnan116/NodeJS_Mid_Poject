@@ -44,4 +44,26 @@ module.exports ={
 			}
 		});
 	},
+
+	getById: function(id, callback){
+		var sql = "select * from teachers where id=?";
+		db.getResult(sql, [id], function(result){
+			if(result){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
+	updateTeacher: function(user, callback){
+		var sql = "update teachers set userid=?, fname=?, lname=?, email=?, contact=?, dept=? where id=?";
+		db.execute(sql, [user.userid, user.fname, user.lname, user.email, user.contact, user.dept, user.id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 }
