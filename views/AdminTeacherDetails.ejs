@@ -240,48 +240,25 @@
                           <th scope="col" class="border-0">First Name</th>
                           <th scope="col" class="border-0">Last Name</th>
                           <th scope="col" class="border-0">Email</th>
-                          <th scope="col" class="border-0">Education</th>
                           <th scope="col" class="border-0">Phone</th>
                           <th scope="col" class="border-0">Department</th>
+                          <th scope="col" class="border-0">Registration Date</th>
+                          <th scope="col" class="border-0">Account Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Ali</td>
-                          <td>Kerry</td>
-                          <td>ali@gmail.com</td>
-                          <td>Posdoc</td>
-                          <td>123456</td>
-                          <td>CSE</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Clark</td>
-                          <td>Angela</td>
-                          <td>clark@yahoo.com</td>
-                          <td>MSc</td>
-                          <td>456789</td>
-                          <td>CS</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Jerry</td>
-                          <td>Nathan</td>
-                          <td>jerry@outlook.com</td>
-                          <td>PHD</td>
-                          <td>789456</td>
-                          <td>SE</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Colt</td>
-                          <td>Angela</td>
-                          <td>colt@aiub.edu</td>
-                          <td>MSc</td>
-                          <td>456123</td>
-                          <td>CSE</td>
-                        </tr>
+                        <% for(var i=0; i < teacherlist.length; i++){ %>
+				            <tr>
+				              <td><%= teacherlist[i].userid %></td>
+				              <td><%= teacherlist[i].fname %></td>
+				              <td><%= teacherlist[i].lname %></td>
+				              <td><%= teacherlist[i].email %></td>
+				              <td><%= teacherlist[i].contact %></td>
+				              <td><%= teacherlist[i].dept %></td>
+				              <td><%= teacherlist[i].regDate %></td>
+				              <td><%= teacherlist[i].status %></td>
+						    </tr>
+						<% } %>
                       </tbody>
                     </table>
                   </div>
