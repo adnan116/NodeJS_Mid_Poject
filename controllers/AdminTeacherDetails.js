@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var teacherModel   = require.main.require('./models/teacher-model');
+var userModel   = require.main.require('./models/user-model');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitizeBody } = require('express-validator/filter');
+
 
 router.get('*', function(req, res, next){
 	if(req.cookies['username'] == null){
@@ -74,10 +76,29 @@ router.post('/AdminTeacherUpdate/:id', [
 			if (status) {
 				res.redirect('/AdminTeacherDetails');
 			}else{
-				res.redirect('/AdminTeacherUpdate/:'+req.params.id);
+				res.redirect('/AdminTeacherUpdate/'+req.params.id);
 			}	
 		});
 	}
+});
+
+router.get('/AdminTeacherDelete/:id', function(req, res){
+	console.log(req.params.id);
+	teacherModel.deleteTeacher(req.params.id, function(status){
+		if(status){
+			console.log(status);
+			userModel.deleteUser(req.params.id, function(status1){
+				if(status1){
+					console.log(status1);
+					res.redirect('/AdminTeacherDetails');
+				}else{
+					res.redirect('/AdminTeacherDetails');
+				}
+			});
+		}else{
+			res.redirect('/AdminTeacherDetails');
+		}
+	});
 });
 
 

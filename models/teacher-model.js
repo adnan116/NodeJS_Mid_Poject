@@ -66,4 +66,15 @@ module.exports ={
 			}
 		});
 	},
+
+	deleteTeacher: function(id, callback){
+		var sql = "delete from teachers where userid=?";
+		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 }

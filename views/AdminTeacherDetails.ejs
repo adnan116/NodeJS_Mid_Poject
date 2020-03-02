@@ -14,35 +14,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body class="h-100">
-    <!-- <div class="color-switcher animated">
-      <h5>Accent Color</h5>
-      <ul class="accent-colors">
-        <li class="accent-primary active" data-color="primary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-secondary" data-color="secondary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-success" data-color="success">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-info" data-color="info">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-warning" data-color="warning">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-danger" data-color="danger">
-          <i class="material-icons">check</i>
-        </li>
-      </ul>
-      <div class="close">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="color-switcher-toggle animated pulse infinite">
-      <i class="material-icons">settings</i>
-    </div> -->
+    
     <div class="container-fluid">
       <div class="row">
         <!-- Main Sidebar -->
@@ -249,94 +221,34 @@
                       </thead>
                       <tbody>
                         <% for(var i=0; i < teacherlist.length; i++){ %>
-				            <tr>
-				              	<td><%= teacherlist[i].userid %></td>
-				              	<td><%= teacherlist[i].fname %></td>
-					            <td><%= teacherlist[i].lname %></td>
-					            <td><%= teacherlist[i].email %></td>
-					            <td><%= teacherlist[i].contact %></td>
-					            <td><%= teacherlist[i].dept %></td>
-					            <td><%= teacherlist[i].regDate %></td>
-					            <td><%= teacherlist[i].status %></td>
-					            <td>
-									<a href="/AdminTeacherDetails/AdminTeacherUpdate/<%= teacherlist[i].id %>">Update</a> | 
-									<a href="/AdminTeacherDetails/AdminTeacherDelete/<%= teacherlist[i].id %>">Remove</a>  
-								</td>
-						    </tr>
-						<% } %>
-                      </tbody>
+      				            <tr>
+      				              <td><%= teacherlist[i].userid %></td>
+      				              <td><%= teacherlist[i].fname %></td>
+      					            <td><%= teacherlist[i].lname %></td>
+      					            <td><%= teacherlist[i].email %></td>
+      					            <td><%= teacherlist[i].contact %></td>
+      					            <td><%= teacherlist[i].dept %></td>
+      					            <td><%= teacherlist[i].regDate %></td>
+      					            <td><%= teacherlist[i].status %></td>
+      					            <td>
+      									       <a href="/AdminTeacherDetails/AdminTeacherUpdate/<%= teacherlist[i].id %>">Update</a> | 
+                               <a href="/AdminTeacherDetails/AdminTeacherDelete/<%= teacherlist[i].userid %>">Delete</a> 
+      						          </td>
+      						        </tr>
+						            <% } %>
+                   </tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- End Default Light Table -->
-            <!-- Default Dark Table -->
-           <!--  <div class="row">
-              <div class="col">
-                <div class="card card-small overflow-hidden mb-4">
-                  <div class="card-header bg-dark">
-                    <h6 class="m-0 text-white">Inactive Users</h6>
-                  </div>
-                  <div class="card-body p-0 pb-3 bg-dark text-center">
-                    <table class="table table-dark mb-0">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th scope="col" class="border-bottom-0">#</th>
-                          <th scope="col" class="border-bottom-0">First Name</th>
-                          <th scope="col" class="border-bottom-0">Last Name</th>
-                          <th scope="col" class="border-bottom-0">Country</th>
-                          <th scope="col" class="border-bottom-0">City</th>
-                          <th scope="col" class="border-bottom-0">Phone</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Graham</td>
-                          <td>Brent</td>
-                          <td>Benin</td>
-                          <td>Ripabottoni</td>
-                          <td>1-512-760-9094</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Clark</td>
-                          <td>Angela</td>
-                          <td>Estonia</td>
-                          <td>Borghetto di Vara</td>
-                          <td>1-660-850-1647</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Wylie</td>
-                          <td>Joseph</td>
-                          <td>Korea, North</td>
-                          <td>Guelph</td>
-                          <td>325-4351</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Garth</td>
-                          <td>Clementine</td>
-                          <td>Indonesia</td>
-                          <td>Narcao</td>
-                          <td>722-8264</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- End Default Dark Table -->
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
           </footer>
         </main>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>

@@ -4,17 +4,13 @@ var router = express.Router();
 router.get('/',function(req,res){
 	if(req.cookies['username']!=null)
 	{
-		var today = new Date();
-		var sysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-		var sysTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
 		var data={
 		name: req.cookies['username'],
-		date: sysDate,
-		time: sysTime
+		date: req.cookies['date'],
+		time: req.cookies['time']
 		}
 		console.log('Home page requested!');
-		res.render('Adminhome',data);
+		res.render('Adminhome',{info: data});
 	}else{
 		res.redirect('/logout');
 	}

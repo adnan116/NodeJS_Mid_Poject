@@ -15,10 +15,16 @@ router.post('/', function(req, res){
 		password: req.body.password
 	};
 
+	var today = new Date();
+	var sysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	var sysTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
 	userModel.validate(user, function(result){
 		if(result){
 			res.cookie('username', req.body.uname);
 			res.cookie('password', req.body.password);
+			res.cookie('date', sysDate);
+			res.cookie('time', sysTime);
 			res.redirect('/Adminhome');
 		}else{
 			var error ={

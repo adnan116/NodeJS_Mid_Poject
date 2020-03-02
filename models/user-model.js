@@ -33,4 +33,15 @@ module.exports ={
 			}
 		});
 	},
+
+	deleteUser: function(id, callback){
+		var sql = "delete from login where userid=?";
+		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 }
