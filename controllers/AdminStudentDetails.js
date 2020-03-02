@@ -88,5 +88,25 @@ router.post('/AdminStudentUpdate/:id', [
 	}
 });
 
+router.get('/AdminStudentDelete/:id', function(req, res){
+	console.log(req.params.id);
+	studentModel.deleteStudent(req.params.id, function(status){
+		if(status){
+			console.log(status);
+			userModel.deleteUser(req.params.id, function(status1){
+				if(status1){
+					console.log(status1);
+					res.redirect('/AdminStudentDetails');
+				}else{
+					res.redirect('/AdminStudentDetails');
+				}
+			});
+		}else{
+			res.redirect('/AdminStudentDetails');
+		}
+	});
+});
+
+
 
 module.exports = router;
