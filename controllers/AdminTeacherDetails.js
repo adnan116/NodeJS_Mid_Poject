@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var teacherModel   = require.main.require('./models/teacher-model');
-var userModel   = require.main.require('./models/user-model');
-const { check, validationResult } = require('express-validator/check');
+var express 						= require('express');
+var router 							= express.Router();
+var teacherModel   					= require.main.require('./models/teacher-model');
+var userModel   					= require.main.require('./models/user-model');
+const { check, validationResult } 	= require('express-validator/check');
 const { matchedData, sanitizeBody } = require('express-validator/filter');
 
 
@@ -76,7 +76,7 @@ router.post('/AdminTeacherUpdate/:id', [
 			if (status) {
 				res.redirect('/AdminTeacherDetails');
 			}else{
-				res.redirect('/AdminTeacherUpdate/'+req.params.id);
+				res.redirect('/AdminTeacherDetails/AdminTeacherUpdate/'+req.params.id);
 			}	
 		});
 	}
