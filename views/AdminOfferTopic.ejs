@@ -207,23 +207,49 @@
 					</span>
 				</div>
 
-				<form class="login101-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
-						<input class="input100" type="text" name="topicID" placeholder="Enter Topic ID">
-						<span class="focus-input100"></span>
-					</div>
+				<form method="POST" class="login101-form validate-form">
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Topic name is required">
-						<textarea class="input100" type="text" name="topicName" placeholder="Enter Research or Software Project Name"></textarea>
+						<textarea class="input100" type="text" name="name" placeholder="Enter Research or Software Project Name"></textarea>
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Description is required">
-						<textarea class="input100" type="text" name="topicDes" placeholder="Enter Research or Software Project Details"></textarea>
+						<textarea class="input100" type="text" name="description" placeholder="Enter Research or Software Project Details"></textarea>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Domain is required">
+						<select class="input100" name="domain">
+              				<option value="">Select Domain</option>
+              			<% for(var i=0; i < domainlist.length; i++){ %>
+              				<option value="<%= domainlist[i].name%>"><%= domainlist[i].name%></option>
+              			<% } %>
+            			</select>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Supervisor is required">
+						<select class="input100" name="supervisor">
+              				<option value="">Select Supervisor</option>
+              				<% for(var i=0; i < teacherlist.length; i++){ %>
+              				<option value="<%= teacherlist[i].fname%> <%= teacherlist[i].lname%>"><%= teacherlist[i].fname%> <%= teacherlist[i].lname%></option>
+              			<% } %>
+            			</select>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Type is required">
+						<select class="input100" name="type">
+              				<option value="">Select Type</option>
+              				<option value="Thesis">Thesis</option>
+              				<option value="SP-1">SP-1</option>
+              				<option value="SP-2">SP-2</option>
+            			</select>
 						<span class="focus-input100"></span>
 					</div>
 
 					<div id="login100-form-Btn">
-						<button class="login101-form-btn">
+						<button type="submit" class="login101-form-btn">
 							Add Topic
 						</button>
 					</div>

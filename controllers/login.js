@@ -25,7 +25,7 @@ router.post('/', function(req, res){
 			res.cookie('password', req.body.password);
 			res.cookie('date', sysDate);
 			res.cookie('time', sysTime);
-			res.redirect('/Adminhome');
+			res.redirect('/AdminHome');
 		}else{
 			var error ={
 				message: 'Invalid Username/Password'

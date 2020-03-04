@@ -23,7 +23,7 @@ var	blockTeacher	= require('./controllers/AdminTeacherBlock');
 var	unblockTeacher	= require('./controllers/AdminTeacherUnblock');
 var teacherList		= require('./controllers/AdminTeacherDetails');
 var addteacher		= require('./controllers/AdminTeacherReg');
-var updateTeacher	= require('./controllers/AdminTeacherUpdate');
+//var updateTeacher	= require('./controllers/AdminTeacherUpdate');
 
 
 var app = express();
@@ -55,7 +55,7 @@ app.use('/AdminTeacherBlock',blockTeacher);
 app.use('/AdminTeacherUnblock',unblockTeacher);
 app.use('/AdminTeacherDetails',teacherList);
 app.use('/AdminTeacherReg',addteacher);
-app.use('/AdminTeacherUpdate',updateTeacher);
+//app.use('/AdminTeacherUpdate',updateTeacher);
 
 
 //routes
