@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Faculty List</title>
+    <title>Teacher List</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -14,7 +14,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body class="h-100">
-    
     <div class="container-fluid">
       <div class="row">
         <!-- Main Sidebar -->
@@ -170,12 +169,12 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="/AdminProfile">
-                    <i class="material-icons">&#xE7FD;</i> Profile</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/AdminChangePassword">
+                      <i class="material-icons">&#xE7FD;</i> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/AdminChangePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="/logout">
+                    <a class="dropdown-item text-danger" href="/logout">
                       <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                   </div>
                 </li>
@@ -193,7 +192,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Faculty Details</h3>
+                <h3 class="page-title">Teacher Details</h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -216,27 +215,29 @@
                           <th scope="col" class="border-0">Department</th>
                           <th scope="col" class="border-0">Registration Date</th>
                           <th scope="col" class="border-0">Account Status</th>
-                          <th scope="col" class="border-0">Action</th>
+                          <th scope="col" class="border-0" colspan="2">Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <% for(var i=0; i < teacherlist.length; i++){ %>
-      				            <tr>
-      				              <td><%= teacherlist[i].userid %></td>
-      				              <td><%= teacherlist[i].fname %></td>
-      					            <td><%= teacherlist[i].lname %></td>
-      					            <td><%= teacherlist[i].email %></td>
-      					            <td><%= teacherlist[i].contact %></td>
-      					            <td><%= teacherlist[i].dept %></td>
-      					            <td><%= teacherlist[i].regDate %></td>
-      					            <td><%= teacherlist[i].status %></td>
-      					            <td>
-      									       <a href="/AdminTeacherDetails/AdminTeacherUpdate/<%= teacherlist[i].id %>">Update</a> | 
-                               <a href="/AdminTeacherDetails/AdminTeacherDelete/<%= teacherlist[i].userid %>">Delete</a> 
-      						          </td>
-      						        </tr>
-						            <% } %>
-                   </tbody>
+      				        <tr>
+      				        	<td><%= teacherlist[i].userid %></td>
+  				              	<td><%= teacherlist[i].fname %></td>
+  					            <td><%= teacherlist[i].lname %></td>
+  					            <td><%= teacherlist[i].email %></td>
+  					            <td><%= teacherlist[i].contact %></td>
+  					            <td><%= teacherlist[i].dept %></td>
+  					            <td><%= teacherlist[i].regDate %></td>
+  					            <td><%= teacherlist[i].status %></td>
+  					            <td>
+  									<a href="/AdminTeacherDetails/AdminTeacherUpdate/<%= teacherlist[i].id %>">Update</a> 
+  								</td> 
+  								<td>
+                           			<a href="/AdminTeacherDetails/AdminTeacherDelete/<%= teacherlist[i].userid %>">Delete</a> 
+  						        </td>
+  						    </tr>
+					    <% } %>
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -244,11 +245,12 @@
             </div>
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            
           </footer>
         </main>
       </div>
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>

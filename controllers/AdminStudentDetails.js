@@ -88,7 +88,17 @@ router.post('/AdminStudentUpdate/:id', [
 	}
 });
 
+
 router.get('/AdminStudentDelete/:id', function(req, res){
+	
+	studentModel.getByUserId(req.params.id, function(result){
+		//console.log(result);
+		res.render('AdminStudentDelete', {studentDel: result[0]});
+	});
+});
+
+
+router.post('/AdminStudentDelete/:id', function(req, res){
 	console.log(req.params.id);
 	studentModel.deleteStudent(req.params.id, function(status){
 		if(status){
@@ -98,15 +108,13 @@ router.get('/AdminStudentDelete/:id', function(req, res){
 					console.log(status1);
 					res.redirect('/AdminStudentDetails');
 				}else{
-					res.redirect('/AdminStudentDetails');
+					res.redirect('/AdminStudentDelete/'+req.params.id);
 				}
 			});
 		}else{
-			res.redirect('/AdminStudentDetails');
+			res.redirect('/AdminStudentDelete/'+req.params.id);
 		}
 	});
 });
-
-
 
 module.exports = router;

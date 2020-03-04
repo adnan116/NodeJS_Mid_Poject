@@ -83,6 +83,15 @@ router.post('/AdminTeacherUpdate/:id', [
 });
 
 router.get('/AdminTeacherDelete/:id', function(req, res){
+	
+	teacherModel.getByUserId(req.params.id, function(result){
+		//console.log(result);
+		res.render('AdminTeacherDelete', {teacherDel: result[0]});
+	});
+});
+
+router.post('/AdminTeacherDelete/:id', function(req, res){
+	
 	console.log(req.params.id);
 	teacherModel.deleteTeacher(req.params.id, function(status){
 		if(status){
@@ -92,14 +101,13 @@ router.get('/AdminTeacherDelete/:id', function(req, res){
 					console.log(status1);
 					res.redirect('/AdminTeacherDetails');
 				}else{
-					res.redirect('/AdminTeacherDetails');
+					res.redirect('/AdminTeacherDelete/'+req.params.id);
 				}
 			});
 		}else{
-			res.redirect('/AdminTeacherDetails');
+			res.redirect('/AdminTeacherDelete/'+req.params.id);
 		}
 	});
 });
 
-
-module.exports = router;
+module.exports = router;	

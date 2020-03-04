@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Student List</title>
+    <title>Confirmation</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -192,7 +192,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Student Details</h3>
+                <h3 class="page-title">Teacher Delete Confirmation</h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -204,45 +204,58 @@
                     <h6 class="m-0">Active Users</h6>
                   </div> -->
                   <div class="card-body p-0 pb-3 text-center">
-                    <table class="table mb-0">
-                      <thead class="bg-light">
-                        <tr>
-                          <th scope="col" class="border-0">ID</th>
-                          <th scope="col" class="border-0">First Name</th>
-                          <th scope="col" class="border-0">Last Name</th>
-                          <th scope="col" class="border-0">Email</th>
-                          <th scope="col" class="border-0">Phone</th>
-                          <th scope="col" class="border-0">Department</th>
-                          <th scope="col" class="border-0">Credit</th>
-                          <th scope="col" class="border-0">CGPA</th>
-                          <th scope="col" class="border-0">Reg Date</th>
-                          <th scope="col" class="border-0">Status</th>
-                          <th scope="col" class="border-0" colspan="2">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% for(var i=0; i < studentlist.length; i++){ %>
-                        	<tr>
-	                            <td><%= studentlist[i].userid %></td>
-	                            <td><%= studentlist[i].fname %></td>
-	                            <td><%= studentlist[i].lname %></td>
-	                            <td><%= studentlist[i].email %></td>
-	                            <td><%= studentlist[i].contact %></td>
-	                            <td><%= studentlist[i].dept %></td>
-	                            <td><%= studentlist[i].credit %></td>
-	                            <td><%= studentlist[i].cgpa %></td>
-	                            <td><%= studentlist[i].regDate %></td>
-	                            <td><%= studentlist[i].status %></td>
-	                            <td>
-	                               <a href="/AdminStudentDetails/AdminStudentUpdate/<%= studentlist[i].id %>">Update</a>
-	                           </td>
-	                            <td>
-	                               <a href="/AdminStudentDetails/AdminStudentDelete/<%= studentlist[i].userid %>">Delete</a> 
-	                            </td>
-                          	</tr>
-                        <% } %>
-                      </tbody>
-                    </table>
+                    <form method="POST">
+                      <table class="table mb-0">
+                        <thead class="bg-light">
+                          <tr>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Criterion</th>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr>
+                            <td>Faculty ID</td>
+                            <td><%= teacherDel.userid %></td>
+                          </tr>
+
+                          <tr>
+                            <td>First Name</td>
+                            <td><%= teacherDel.fname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Last Name</td>
+                            <td><%= teacherDel.lname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Email</td>
+                            <td><%= teacherDel.email %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Phone</td>
+                            <td><%= teacherDel.contact %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Department</td>
+                            <td><%= teacherDel.dept %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Account Status</td>
+                            <td><%= teacherDel.status %></td>
+                          </tr>
+
+                          <tr>
+                            <td><input type="submit" name="submit" value="Delete"></td>
+                            <td><a href="/AdminTeacherDetails"><input type="button" name="cancel" value="Cancel"></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
                   </div>
                 </div>
               </div>
