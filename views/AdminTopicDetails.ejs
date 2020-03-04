@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard </title>
+    <title>Topic List</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -14,35 +14,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body class="h-100">
-    <div class="color-switcher animated">
-      <h5>Accent Color</h5>
-      <ul class="accent-colors">
-        <li class="accent-primary active" data-color="primary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-secondary" data-color="secondary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-success" data-color="success">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-info" data-color="info">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-warning" data-color="warning">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-danger" data-color="danger">
-          <i class="material-icons">check</i>
-        </li>
-      </ul>
-      <div class="close">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="color-switcher-toggle animated pulse infinite">
-      <i class="material-icons">settings</i>
-    </div>
     <div class="container-fluid">
       <div class="row">
         <!-- Main Sidebar -->
@@ -137,12 +108,7 @@
                   <span>Offer Topic</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/AdminTopicDetails">
-                  <i class="material-icons">vertical_split</i>
-                  <span>Topic List</span>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link " href="/AdminAllocateFaculty">
                   <i class="material-icons">person</i>
@@ -177,7 +143,7 @@
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
                       <i class="material-icons">&#xE7F4;</i>
-                      <span class="badge badge-pill badge-danger"></span>
+                      <span class="badge badge-pill badge-danger">2</span>
                     </div>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
@@ -219,7 +185,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/AdminChangePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
-                    <div class="dropdown-divider"></div>
+                      <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="/logout">
                       <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                   </div>
@@ -232,17 +198,60 @@
               </nav>
             </nav>
           </div>
-
-          <div>
-          	<center>
-	          	<h1>Welcome Admin Panel</h1><br><br>
-	          	<h4>UserID: <%= info.name %></h4>
-	          	<h4>Last Login Time: <%= info.time %></h4>
-	          	<h4>Last Login Date: <%= info.date %></h4>
-	        </center>
-          </div>
           <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <span class="text-uppercase page-subtitle">Overview</span>
+                <h3 class="page-title">Topic Details</h3>
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Default Light Table -->
+            <div class="row">
+              <div class="col">
+                <div class="card card-small mb-4">
+                  <!-- <div class="card-header border-bottom">
+                    <h6 class="m-0">Active Users</h6>
+                  </div> -->
+                  <div class="card-body p-0 pb-3 text-center">
+                    <table class="table mb-0">
+                      <thead class="bg-light">
+                        <tr>
+                          <th scope="col" class="border-0">Topic Name</th>
+                          <th scope="col" class="border-0">Description</th>
+                          <th scope="col" class="border-0">Domain</th>
+                          <th scope="col" class="border-0">Supervisor</th>
+                          <th scope="col" class="border-0">Type</th>
+                          <th scope="col" class="border-0" colspan="2">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for(var i=0; i < topiclist.length; i++){ %>
+      				        <tr>
+      				        	<td style="text-align: center;"><%= topiclist[i].name %></td>
+  				              	<td style="text-align: justify;"><%= topiclist[i].description %></td>
+  					            <td><%= topiclist[i].domain %></td>
+  					            <td><%= topiclist[i].supervisor %></td>
+  					            <td><%= topiclist[i].type %></td>
+  					            <td>
+  									<a href="/AdminTopicDetails/AdminTopicUpdate/<%= topiclist[i].id %>">Update</a> 
+  								</td> 
+  								<td>
+                           			<a href="/AdminTopicDetails/AdminTopicDelete/<%= topiclist[i].id %>">Delete</a> 
+  						        </td>
+  						    </tr>
+					    <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            
           </footer>
         </main>
       </div>
@@ -255,6 +264,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
     <script src="/scripts/extras.1.1.0.min.js"></script>
     <script src="/scripts/shards-dashboards.1.1.0.min.js"></script>
-    <script src="/scripts/app/app-blog-overview.1.1.0.js"></script>
   </body>
 </html>
