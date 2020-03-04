@@ -56,6 +56,17 @@ module.exports ={
 		});
 	},
 
+	getAllInactiveTeachers:function(callback){
+		var sql = "select * from teachers where status ='inactive'";
+		db.getResult(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 	getById: function(id, callback){
 		var sql = "select * from teachers where id=?";
 		db.getResult(sql, [id], function(result){

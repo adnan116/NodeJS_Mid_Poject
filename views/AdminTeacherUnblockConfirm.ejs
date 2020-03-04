@@ -79,7 +79,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/AdminteacherBlock">
+                <a class="nav-link " href="/AdminteacherUnblock">
                   <i class="material-icons">table_chart</i>
                   <span>Block Student</span>
                 </a>
@@ -91,7 +91,7 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherBlock">
+                <a class="nav-link " href="/AdminteacherUnblock">
                   <i class="material-icons">table_chart</i>
                   <span>Block Faculty</span>
                 </a>
@@ -204,7 +204,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Teacher Block Confirmation</h3>
+                <h3 class="page-title">Teacher Unblock Confirmation</h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -228,42 +228,42 @@
 
                           <tr>
                             <td>Faculty ID</td>
-                            <td><%= teacherBlock.userid %></td>
+                            <td><%= teacherUnblock.userid %></td>
                           </tr>
 
                           <tr>
                             <td>First Name</td>
-                            <td><%= teacherBlock.fname %></td>
+                            <td><%= teacherUnblock.fname %></td>
                           </tr>
 
                           <tr>
                             <td>Last Name</td>
-                            <td><%= teacherBlock.lname %></td>
+                            <td><%= teacherUnblock.lname %></td>
                           </tr>
 
                           <tr>
                             <td>Email</td>
-                            <td><%= teacherBlock.email %></td>
+                            <td><%= teacherUnblock.email %></td>
                           </tr>
 
                           <tr>
                             <td>Phone</td>
-                            <td><%= teacherBlock.contact %></td>
+                            <td><%= teacherUnblock.contact %></td>
                           </tr>
 
                           <tr>
                             <td>Department</td>
-                            <td><%= teacherBlock.dept %></td>
+                            <td><%= teacherUnblock.dept %></td>
                           </tr>
 
                           <tr>
                             <td>Account Status</td>
-                            <td><%= teacherBlock.status %></td>
+                            <td><%= teacherUnblock.status %></td>
                           </tr>
 
                           <tr>
-                            <td><input type="submit" name="submit" value="Block"></td>
-                            <td><a href="/AdminTeacherBlock"><input type="button" name="cancel" value="Cancel"></a></td>
+                            <td><input type="submit" name="submit" value="Unblock"></td>
+                            <td><a href="/AdminTeacherUnblock"><input type="button" name="cancel" value="Cancel"></a></td>
                           </tr>
                         </tbody>
                       </table>
