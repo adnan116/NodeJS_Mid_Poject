@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Block Student</title>
+    <title>Confirmation</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -14,35 +14,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body class="h-100">
-    <!-- <div class="color-switcher animated">
-      <h5>Accent Color</h5>
-      <ul class="accent-colors">
-        <li class="accent-primary active" data-color="primary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-secondary" data-color="secondary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-success" data-color="success">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-info" data-color="info">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-warning" data-color="warning">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-danger" data-color="danger">
-          <i class="material-icons">check</i>
-        </li>
-      </ul>
-      <div class="close">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="color-switcher-toggle animated pulse infinite">
-      <i class="material-icons">settings</i>
-    </div> -->
     <div class="container-fluid">
       <div class="row">
         <!-- Main Sidebar -->
@@ -221,7 +192,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Block Student</h3>
+                <h3 class="page-title">Student Block Confirmation</h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -233,49 +204,75 @@
                     <h6 class="m-0">Active Users</h6>
                   </div> -->
                   <div class="card-body p-0 pb-3 text-center">
-                    <table class="table mb-0">
-                      <thead class="bg-light">
-                        <tr>
-                          <th scope="col" class="border-0">ID</th>
-                          <th scope="col" class="border-0">First Name</th>
-                          <th scope="col" class="border-0">Last Name</th>
-                          <th scope="col" class="border-0">Email</th>
-                          <th scope="col" class="border-0">Phone</th>
-                          <th scope="col" class="border-0">Department</th>
-                          <th scope="col" class="border-0">Credit</th>
-                          <th scope="col" class="border-0">CGPA</th>
-                          <th scope="col" class="border-0">Reg Date</th>
-                          <th scope="col" class="border-0">Status</th>
-                          <th scope="col" class="border-0">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% for(var i=0; i < studentlist.length; i++){ %>
-                        	<tr>
-	                            <td><%= studentlist[i].userid %></td>
-	                            <td><%= studentlist[i].fname %></td>
-	                            <td><%= studentlist[i].lname %></td>
-	                            <td><%= studentlist[i].email %></td>
-	                            <td><%= studentlist[i].contact %></td>
-	                            <td><%= studentlist[i].dept %></td>
-	                            <td><%= studentlist[i].credit %></td>
-	                            <td><%= studentlist[i].cgpa %></td>
-	                            <td><%= studentlist[i].regDate %></td>
-	                            <td><%= studentlist[i].status %></td>
-	                            <td>
-	                               <a href="/AdminStudentBlock/AdminStudentBlockConfirm/<%= studentlist[i].id %>">Block</a>
-	                           </td>
-                          	</tr>
-                        <% } %>
-                      </tbody>
-                    </table>
+                    <form method="POST">
+                      <table class="table mb-0">
+                        <thead class="bg-light">
+                          <tr>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Criterion</th>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr>
+                            <td>Student ID</td>
+                            <td><%= studentBlock.userid %></td>
+                          </tr>
+
+                          <tr>
+                            <td>First Name</td>
+                            <td><%= studentBlock.fname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Last Name</td>
+                            <td><%= studentBlock.lname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Email</td>
+                            <td><%= studentBlock.email %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Phone</td>
+                            <td><%= studentBlock.contact %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Department</td>
+                            <td><%= studentBlock.dept %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Credit</td>
+                            <td><%= studentBlock.credit %></td>
+                          </tr>
+
+                          <tr>
+                            <td>CGPA</td>
+                            <td><%= studentBlock.cgpa %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Account Status</td>
+                            <td><%= studentBlock.status %></td>
+                          </tr>
+
+                          <tr>
+                            <td><input type="submit" name="submit" value="Block"></td>
+                            <td><a href="/AdminStudentDetails"><input type="button" name="cancel" value="Cancel"></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
-           
+            
           </footer>
         </main>
       </div>

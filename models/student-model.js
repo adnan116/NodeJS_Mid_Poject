@@ -34,6 +34,17 @@ module.exports ={
 		});
 	},
 
+	getAllActiveStudents:function(callback){
+		var sql = "select * from students where status = 'active'";
+		db.getResult(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 	getById: function(id, callback){
 		var sql = "select * from students where id=?";
 		db.getResult(sql, [id], function(result){
@@ -58,6 +69,17 @@ module.exports ={
 
 	deleteStudent: function(id, callback){
 		var sql = "delete from students where userid=?";
+		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	blockStudent: function(id, callback){
+		var sql = "update students set status = 'inactive' where id=?";
 		db.execute(sql, [id], function(status){
 			if(status){
 				callback(true);
