@@ -82,30 +82,23 @@ router.post('/AdminTeacherUpdate/:id', [
 	}
 });
 
-router.get('/AdminTeacherDelete/:id', function(req, res){
+router.get('/AdminTopicDelete/:id', function(req, res){
 	
-	teacherModel.getByUserId(req.params.id, function(result){
+	topicModel.getById(req.params.id, function(result){
 		//console.log(result);
-		res.render('AdminTeacherDelete', {teacherDel: result[0]});
+		res.render('AdminTopicDelete', {topicDel: result[0]});
 	});
 });
 
-router.post('/AdminTeacherDelete/:id', function(req, res){
+router.post('/AdminTopicDelete/:id', function(req, res){
 	
 	console.log(req.params.id);
-	teacherModel.deleteTeacher(req.params.id, function(status){
+	topicModel.deleteTopic(req.params.id, function(status){
 		if(status){
 			console.log(status);
-			userModel.deleteUser(req.params.id, function(status1){
-				if(status1){
-					console.log(status1);
-					res.redirect('/AdminTeacherDetails');
-				}else{
-					res.redirect('/AdminTeacherDelete/'+req.params.id);
-				}
-			});
+			res.redirect('/AdminTopicDetails');
 		}else{
-			res.redirect('/AdminTeacherDelete/'+req.params.id);
+			res.redirect('/AdminTopicDelete/'+req.params.id);
 		}
 	});
 });
