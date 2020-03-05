@@ -182,7 +182,7 @@
               <li class="nav-item">
                 <a class="nav-link " href="/AdminAllocateFaculty">
                   <i class="material-icons">person</i>
-                  <span>Allocate Supevisor</span>
+                  <span>Allocate External</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -221,40 +221,40 @@
 			<div class="wrap-login101" class="text-center">
 				<div class="login100-form-title" style="background-image: url(/images/unnamed.jpg);">
 					<span class="login100-form-title-1">
-						Allocate Supervisor & External
+						Allocate External
 					</span>
 				</div>
 
-				<form class="login101-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
-						<select class="input100" name="topic">
-              <option value="">Select Topic</option>
-            </select>
-						<span class="focus-input100"></span>
-					</div>
-          <div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
-            <select class="input100" name="group">
-              <option value="">Select Group</option>
-            </select>
-            <span class="focus-input100"></span>
-          </div>
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Supervisor name is required">
-            <select class="input100" name="supervisor">
-              <option value="">Select Supervisor</option>
-            </select>
-						<span class="focus-input100"></span>
-					</div>
+				<form method="POST" class="login101-form validate-form">
+          			<div class="wrap-input100 validate-input m-b-26" data-validate="Group number is required">
+            			<select class="input100" name="group_id">
+              				<option value="">Select Group</option>
+              			<% for(var i=0; i < grouplist.length; i++){ %>
+              				<option value="<%= grouplist[i].group_id%>"><%= grouplist[i].group_id%></option>
+              			<% } %>
+            			</select>
+            			<span class="focus-input100"></span>
+            			<%if(error.group_id){%>
+              				<b style="color: red;"><%= error.group_id.msg%></b>
+            			<%}%>
+          			</div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "External is required">
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "External name is required">
 						<select class="input100" name="external">
-              <option value="">Select External</option>
-            </select>
+              				<option value="">Select External</option>
+              			<% for(var i=0; i < teacherlist.length; i++){ %>
+              				<option value="<%= teacherlist[i].fname%> <%= teacherlist[i].lname%>"><%= teacherlist[i].fname%> <%= teacherlist[i].lname%></option>
+              			<% } %>
+           				</select>
 						<span class="focus-input100"></span>
+						<%if(error.external){%>
+              				<b style="color: red;"><%= error.external.msg%></b>
+            			<%}%>
 					</div>
 
 					<div id="login100-form-Btn">
-						<button class="login101-form-btn">
-							Allocate
+						<button type="submit" class="login101-form-btn" style="margin-right: 50%;">
+						Allocate External
 						</button>
 					</div>
 				</form>

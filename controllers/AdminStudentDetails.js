@@ -15,10 +15,10 @@ router.get('*', function(req, res, next){
 
 
 router.get('/', function(req, res){
-	teacherModel.getAllInactiveTeachers(function(results){
+	studentModel.getAllStudents(function(results){
 		if(results.length > 0){
-			console.log('Teacher Unblock list requested!');
-    		res.render('AdminTeacherUnblock', {teacherlist: results});
+			console.log('Student list requested!');
+    		res.render('AdminStudentDetails', {studentlist: results});
 		}else{
 			res.send('Null Value');
 		}
