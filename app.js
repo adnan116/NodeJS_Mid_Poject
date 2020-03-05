@@ -24,6 +24,8 @@ var	unblockTeacher	= require('./controllers/AdminTeacherUnblock');
 var teacherList		= require('./controllers/AdminTeacherDetails');
 var addteacher		= require('./controllers/AdminTeacherReg');
 var topicList		= require('./controllers/AdminTopicDetails');
+var addDomain		= require('./controllers/AdminDomainAdd');
+var domainlist		= require('./controllers/AdminDomainDetails');
 //var updateTeacher	= require('./controllers/AdminTeacherUpdate');
 
 
@@ -57,6 +59,8 @@ app.use('/AdminTeacherUnblock',unblockTeacher);
 app.use('/AdminTeacherDetails',teacherList);
 app.use('/AdminTeacherReg',addteacher);
 app.use('/AdminTopicDetails',topicList);
+app.use('/AdminDomainAdd',addDomain);
+app.use('/AdminDomainDetails',domainlist); 
 //app.use('/AdminTeacherUpdate',updateTeacher);
 
 

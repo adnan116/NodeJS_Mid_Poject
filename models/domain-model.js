@@ -24,4 +24,26 @@ module.exports ={
 		});
 	},
 
+	addDoamin: function(domain, callback){
+		var sql = "insert into domain values(?,?)";
+		db.execute(sql, [null, domain.name], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	getAllDomains:function(callback){
+		var sql = "select * from domain";
+		db.getResult(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 }

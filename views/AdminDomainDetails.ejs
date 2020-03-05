@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Unblock Faculty</title>
+    <title>Domain List</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -103,12 +103,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/AdminOfferTopic">
-                  <i class="material-icons">table_chart</i>
-                  <span>Offer Topic</span>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link " href="/AdminDomainAdd">
                   <i class="material-icons">note_add</i>
                   <span>Add Domain</span>
@@ -118,6 +112,12 @@
                 <a class="nav-link " href="/AdminDomainDetails">
                   <i class="material-icons">note_add</i>
                   <span>Domain List</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminOfferTopic">
+                  <i class="material-icons">table_chart</i>
+                  <span>Offer Topic</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -198,12 +198,12 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="/AdminProfile">
-                    <i class="material-icons">&#xE7FD;</i> Profile</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/AdminChangePassword">
+                      <i class="material-icons">&#xE7FD;</i> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/AdminChangePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="/logout">
+                    <a class="dropdown-item text-danger" href="/logout">
                       <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                   </div>
                 </li>
@@ -221,7 +221,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Unblock Teacher</h3>
+                <h3 class="page-title">Domain Details</h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -236,31 +236,15 @@
                     <table class="table mb-0">
                       <thead class="bg-light">
                         <tr>
-                          <th scope="col" class="border-0">Faculty ID</th>
-                          <th scope="col" class="border-0">First Name</th>
-                          <th scope="col" class="border-0">Last Name</th>
-                          <th scope="col" class="border-0">Email</th>
-                          <th scope="col" class="border-0">Phone</th>
-                          <th scope="col" class="border-0">Department</th>
-                          <th scope="col" class="border-0">Registration Date</th>
-                          <th scope="col" class="border-0">Account Status</th>
-                          <th scope="col" class="border-0">Action</th>
+                          <th scope="col" class="border-0">Domain ID</th>
+                          <th scope="col" class="border-0">Domain Name</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <% for(var i=0; i < teacherlist.length; i++){ %>
+                        <% for(var i=0; i < domainlist.length; i++){ %>
       				        <tr>
-      				        	<td><%= teacherlist[i].userid %></td>
-  				              	<td><%= teacherlist[i].fname %></td>
-  					            <td><%= teacherlist[i].lname %></td>
-  					            <td><%= teacherlist[i].email %></td>
-  					            <td><%= teacherlist[i].contact %></td>
-  					            <td><%= teacherlist[i].dept %></td>
-  					            <td><%= teacherlist[i].regDate %></td>
-  					            <td><%= teacherlist[i].status %></td>
-  					            <td>
-  									<a href="/AdminTeacherUnblock/AdminTeacherUnblockConfirm/<%= teacherlist[i].id %>">Unblock</a> 
-  								</td> 
+      				            <td><%= domainlist[i].id %></td>
+  				                <td><%= domainlist[i].name %></td>
   						    </tr>
 					    <% } %>
                       </tbody>
@@ -269,9 +253,9 @@
                 </div>
               </div>
             </div>
-            <!-- End Default Dark Table -->
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            
           </footer>
         </main>
       </div>

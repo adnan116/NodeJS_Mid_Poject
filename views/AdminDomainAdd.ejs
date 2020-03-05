@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="no-js h-100" lang="en">
 <head>
-	<title>Offerred Topic</title>
+	<title>Add Domain</title>
 	<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard </title>
+    <title>Dashboard</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -220,69 +220,22 @@
 			<div class="wrap-login101" class="text-center">
 				<div class="login100-form-title" style="background-image: url(/images/unnamed.jpg);">
 					<span class="login100-form-title-1">
-						Offer Research / Software Project Topic
+						Add Domain
 					</span>
 				</div>
 
 				<form method="POST" class="login101-form validate-form">
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Topic name is required">
-						<textarea class="input100" type="text" name="name" placeholder="Enter Research or Software Project Name"></textarea>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Domain name is required">
+						<input class="input100" type="text" name="name" placeholder="Enter Domain Name">
 						<span class="focus-input100"></span>
-            <%if(error.name){%>
-              <b style="color: red;"><%= error.name.msg%></b>
-            <%}%>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Description is required">
-						<textarea class="input100" type="text" name="description" placeholder="Enter Research or Software Project Details"></textarea>
-						<span class="focus-input100"></span>
-            <%if(error.description){%>
-              <b style="color: red;"><%= error.description.msg%></b>
-            <%}%>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Domain is required">
-						<select class="input100" name="domain">
-              				<option value="">Select Domain</option>
-              			<% for(var i=0; i < domainlist.length; i++){ %>
-              				<option value="<%= domainlist[i].name%>"><%= domainlist[i].name%></option>
-              			<% } %>
-            			</select>
-						<span class="focus-input100"></span>
-            <%if(error.domain){%>
-              <b style="color: red;"><%= error.domain.msg%></b>
-            <%}%>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Supervisor is required">
-						<select class="input100" name="supervisor">
-              				<option value="">Select Supervisor</option>
-              				<% for(var i=0; i < teacherlist.length; i++){ %>
-              				<option value="<%= teacherlist[i].fname%> <%= teacherlist[i].lname%>"><%= teacherlist[i].fname%> <%= teacherlist[i].lname%></option>
-              			<% } %>
-            			</select>
-						<span class="focus-input100"></span>
-            <%if(error.supervisor){%>
-              <b style="color: red;"><%= error.supervisor.msg%></b>
-            <%}%>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Type is required">
-						<select class="input100" name="type">
-              				<option value="">Select Type</option>
-              				<option value="Thesis">Thesis</option>
-              				<option value="SP-1">SP-1</option>
-              				<option value="SP-2">SP-2</option>
-            			</select>
-						<span class="focus-input100"></span>
-            <%if(error.type){%>
-              <b style="color: red;"><%= error.type.msg%></b>
-            <%}%>
+			            <%if(error.name){%>
+			              <b style="color: red;"><%= error.name.msg%></b>
+			            <%}%>
 					</div>
 
 					<div id="login100-form-Btn">
 						<button type="submit" class="login101-form-btn">
-							Add Topic
+							Add Domain
 						</button>
 					</div>
 				</form>
@@ -290,7 +243,8 @@
 		</div>
 	</div>
     </footer>
-		
+	
+	
 <!--===============================================================================================-->
 	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
