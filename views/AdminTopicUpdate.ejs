@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js h-100" lang="en">
 <head>
-	<title>Offerred Topic</title>
+	<title>Update Topic</title>
 	<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Dashboard </title>
@@ -220,13 +220,13 @@
 			<div class="wrap-login101" class="text-center">
 				<div class="login100-form-title" style="background-image: url(/images/unnamed.jpg);">
 					<span class="login100-form-title-1">
-						Offer Thesis / Software Project Topic
+						Update Thesis / Software Project Topic
 					</span>
 				</div>
 
 				<form method="POST" class="login101-form validate-form">
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Topic name is required">
-						<textarea class="input100" type="text" name="name" placeholder="Enter Research or Software Project Name" rows="6"></textarea>
+						<textarea class="input100" type="text" name="name" placeholder="Enter Research or Software Project Name" rows="6"><%= topic.name %></textarea>
 						<span class="focus-input100"></span>
             <%if(error.name){%>
               <b style="color: red;"><%= error.name.msg%></b>
@@ -234,7 +234,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Description is required">
-						<textarea class="input100" type="text" name="description" placeholder="Enter Research or Software Project Details" rows="10"></textarea>
+						<textarea class="input100" type="text" name="description" placeholder="Enter Research or Software Project Details" rows="10"><%= topic.description %></textarea>
 						<span class="focus-input100"></span>
             <%if(error.description){%>
               <b style="color: red;"><%= error.description.msg%></b>
@@ -244,8 +244,11 @@
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Domain is required">
 						<select class="input100" name="domain">
               				<option value="">Select Domain</option>
-              			<% for(var i=0; i < domainlist.length; i++){ %>
-              				<option value="<%= domainlist[i].name%>"><%= domainlist[i].name%></option>
+                      <% var domains = []%>
+              			<% for(var i=0; i < domainlist.length; i++){ 
+                      domains[i] = domainlist[i].name;
+                      var selected = ( topic.domain == domainlist[i].name ) ? "selected" : "" %>
+              				<option value="<%=domains[ i ] %>" <%= selected %>><%= domainlist[i].name%></option>
               			<% } %>
             			</select>
 						<span class="focus-input100"></span>
@@ -257,8 +260,11 @@
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Supervisor is required">
 						<select class="input100" name="supervisor">
               				<option value="">Select Supervisor</option>
-              				<% for(var i=0; i < teacherlist.length; i++){ %>
-              				<option value="<%= teacherlist[i].fname%> <%= teacherlist[i].lname%>"><%= teacherlist[i].fname%> <%= teacherlist[i].lname%></option>
+                      <% var teachers = []%>
+              				<% for(var i=0; i < teacherlist.length; i++){ 
+                      teachers[i] = teacherlist[i].fname + " " + teacherlist[i].lname;
+                      var selected = ( topic.supervisor == teachers[i] ) ? "selected" : "" %>
+              				<option value="<%= teachers[i]%>" <%= selected %>><%= teacherlist[i].fname%> <%= teacherlist[i].lname%></option>
               			<% } %>
             			</select>
 						<span class="focus-input100"></span>
@@ -269,11 +275,14 @@
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Type is required">
 						<select class="input100" name="type">
-                            <option value="">Select Type</option>
-                        <% for(var i=0; i < typelist.length; i++){ %>
-                            <option value="<%= typelist[i].type%>"><%= typelist[i].type%></option>
-                        <% } %>
-                        </select>
+              				<option value="">Select Type</option>
+              				<% var types = []%>
+                      <% for(var i=0; i < typelist.length; i++){ 
+                      types[i] = typelist[i].type
+                      var selected = ( topic.type == types[i] ) ? "selected" : "" %>
+                      <option value="<%= types[i]%>" <%= selected %>><%= typelist[i].type%></option>
+                    <% } %>
+            			</select>
 						<span class="focus-input100"></span>
             <%if(error.type){%>
               <b style="color: red;"><%= error.type.msg%></b>
@@ -282,7 +291,7 @@
 
 					<div id="login100-form-Btn">
 						<button type="submit" class="login101-form-btn">
-							Add Topic
+							Update Topic
 						</button>
 					</div>
 				</form>

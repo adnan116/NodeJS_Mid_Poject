@@ -3,6 +3,7 @@ var router 						  = express.Router();
 var teacherModel   				  = require.main.require('./models/teacher-model');
 var domainModel   				  = require.main.require('./models/domain-model');
 var topicModel   				  = require.main.require('./models/topic-model');
+var typeModel   				  = require.main.require('./models/type-model');
 const { check, validationResult } = require('express-validator/check');
 
 router.get('*', function(req, res, next){
@@ -29,16 +30,29 @@ router.get('/', [
 				if(teacherResults.length > 0){
 					//console.log(domainResults);
 					//console.log(teacherResults);
-		    		res.render('AdminOfferTopic', {domainlist: domainResults,teacherlist: teacherResults,error:errors.mapped()});
+		    		typeModel.getAllResearchType(function(typeResults){
+						if(typeResults.length > 0){
+							//console.log(domainResults);
+							//console.log(teacherResults);
+				    		res.render('AdminOfferTopic', {domainlist: domainResults,typelist: typeResults,teacherlist: teacherResults,error:errors.mapped()});
+						}else{
+							res.render('AdminOfferTopic', {domainlist: [],typelist: [],teacherlist: [],error:errors.mapped()});
+						}
+					});
 				}else{
-					res.send('Null Value');
+					res.render('AdminOfferTopic', {domainlist: [],typelist: [],teacherlist: [],error:errors.mapped()});
 				}
 			});
 		}else{
-			res.send('Null Value');
+			res.render('AdminOfferTopic', {domainlist: [],typelist: [],teacherlist: [],error:errors.mapped()});
 		}
 	});
 })
+
+
+
+
+
 
 
 router.post('/', [

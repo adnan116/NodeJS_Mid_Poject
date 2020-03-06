@@ -14,7 +14,7 @@ module.exports ={
 	},
 
 	getById: function(id, callback){
-		var sql = "select * from topic where id=?";
+		var sql = "select * from topic where tid=?";
 		db.getResult(sql, [id], function(result){
 			if(result){
 				callback(result);
@@ -36,8 +36,19 @@ module.exports ={
 	},
 
 	deleteTopic: function(id, callback){
-		var sql = "delete from topic where id=?";
+		var sql = "delete from topic where tid=?";
 		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	updateTopic: function(topic, callback){
+		var sql = "update topic set name=?, description=?, domain=?, supervisor=?, type=? where tid=?";
+		db.execute(sql, [topic.name, topic.description, topic.domain, topic.supervisor, topic.type, topic.id], function(status){
 			if(status){
 				callback(true);
 			}else{

@@ -2,6 +2,8 @@ var express 						= require('express');
 var router 							= express.Router();
 var teacherModel   					= require.main.require('./models/teacher-model');
 var topicModel   					= require.main.require('./models/topic-model');
+var domainModel   				  = require.main.require('./models/domain-model');
+var typeModel   				  = require.main.require('./models/type-model');
 const { check, validationResult } 	= require('express-validator/check');
 const { matchedData, sanitizeBody } = require('express-validator/filter');
 
@@ -26,37 +28,73 @@ router.get('/', function(req, res){
 	});
 })
 
-router.get('/AdminTeacherUpdate/:id',[
-  check('userid', 'UserID is required').isEmpty(),
-  check('fname', 'First Name is required').isEmpty(),
-  check('lname', 'Last Name is required').isEmpty(),
-  check('email', 'Email is not valid').isEmpty(),
-  check('contact', 'Contact No is required').isEmpty(),
-  check('dept', 'Department Name is required').isEmpty()
+/*router.get('/AdminTopicUpdate/:id',[
+  check('name', 'Topic name is required').isEmpty(),
+  check('description', 'Description is required').isEmpty(),
+  check('domain', 'Domain name is required').isEmpty(),
+  check('supervisor', 'Supervisor name is required').isEmpty(),
+  check('type', 'Type is required').isEmpty(),
   ] , function(req, res){
 	var errors = validationResult(req);
-	teacherModel.getById(req.params.id, function(result){
+	topicModel.getById(req.params.id, function(result){
 		console.log(result);
-		res.render('AdminTeacherUpdate', {teacher: result[0], error:errors.mapped()});
+		res.render('AdminTopicUpdate', {topic: result[0], error:errors.mapped()});
 	});
-});
+});*/
 
-router.post('/AdminTeacherUpdate/:id', [
-  check('userid', 'UserID is required').not().isEmpty(),
-  check('fname', 'First Name is required').not().isEmpty(),
-  check('lname', 'Last Name is required').not().isEmpty(),
-  check('email', 'Email is not valid').not().isEmpty().isEmail(),
-  check('contact', 'Contact No is required').not().isEmpty(),
-  check('dept', 'Department Name is required').not().isEmpty()
+
+router.get('/AdminTopicUpdate/:id', [
+  check('name', 'Topic name is required').isEmpty(),
+  check('description', 'Description is required').isEmpty(),
+  check('domain', 'Domain name is required').isEmpty(),
+  check('type', 'Type is required').isEmpty()
+  ] , function(req, res){
+  	console.log('Topic Update requested!');
+  	var errors = validationResult(req);
+	domainModel.getAllDomains(function(domainResults){
+		if(domainResults.length > 0){
+			teacherModel.getAllTeachers(function(teacherResults){
+				if(teacherResults.length > 0){
+					//console.log(domainResults);
+					//console.log(teacherResults);
+		    		//res.render('AdminOfferTopic', {domainlist: domainResults,teacherlist: teacherResults,error:errors.mapped()});
+		    		typeModel.getAllResearchType(function(typeResults){
+						if(typeResults.length > 0){
+							
+				    		topicModel.getById(req.params.id, function(topicresult){
+
+								res.render('AdminTopicUpdate', {topic: topicresult[0],domainlist: domainResults,typelist: typeResults,teacherlist: teacherResults,error:errors.mapped()});
+							});
+						}else{
+							res.render('AdminTopicUpdate', {topic: topicresult[0],domainlist: [],typelist: [],teacherlist: [],error:errors.mapped()});
+						}
+					});
+				}else{
+					res.render('AdminTopicUpdate', {topic: topicresult[0],domainlist: [],typelist: [],teacherlist: [],error:errors.mapped()});
+				}
+			});
+		}else{
+			res.render('AdminTopicUpdate', {topic: topicresult[0],domainlist: [],typelist: [],teacherlist: [],error:errors.mapped()});
+
+		}
+	});
+})
+
+router.post('/AdminTopicUpdate/:id', [
+  check('name', 'Topic name is required').not().isEmpty(),
+  check('description', 'Description is required').not().isEmpty(),
+  check('domain', 'Domain name is required').not().isEmpty(),
+  check('supervisor', 'Supervisor name is required').not().isEmpty(),
+  check('type', 'Type is required').not().isEmpty(),
   ], function(req, res){
 	
-	var teacher = {
-		userid: req.body.userid,
-		fname: req.body.fname,
-		lname: req.body.lname,
-		email: req.body.email,
-		contact: req.body.contact,
-		dept: req.body.dept,
+
+	var topic = {
+		name: req.body.name,
+		description: req.body.description,
+		domain: req.body.domain,
+		supervisor: req.body.supervisor,
+		type: req.body.type,
 		id: req.params.id
 	};
 
@@ -65,27 +103,29 @@ router.post('/AdminTeacherUpdate/:id', [
     	//console.log(errors.mapped());
     	//var allErrors = errors.mapped();
     	//console.log(allErrors);
-    	var teachers = matchedData(req);
-    	console.log(teachers);
-    	teacherModel.getById(req.params.id, function(result){
-			res.render('AdminTeacherUpdate', {teacher: teachers, error:errors.mapped()});
+    	var topics = matchedData(req);
+    	console.log(topics);
+    	topicModel.getById(req.params.id, function(topicresult){
+
+			res.render('AdminTopicUpdate', {topic: topics,domainlist: domainResults,typelist: typeResults,teacherlist: teacherResults,error:errors.mapped()});
 		});
     }else{
-		teacherModel.updateTeacher(teacher, function(status){
+		topicModel.updateTopic(topic, function(status){
 			console.log(status);
 			if (status) {
-				res.redirect('/AdminTeacherDetails');
+				res.redirect('/AdminTopicDetails');
 			}else{
-				res.redirect('/AdminTeacherDetails/AdminTeacherUpdate/'+req.params.id);
+				res.redirect('/AdminTopicDetails/AdminTopicUpdate/'+req.params.id);
 			}	
 		});
 	}
 });
 
+
 router.get('/AdminTopicDelete/:id', function(req, res){
 	
 	topicModel.getById(req.params.id, function(result){
-		//console.log(result);
+		console.log(result);
 		res.render('AdminTopicDelete', {topicDel: result[0]});
 	});
 });
