@@ -5,11 +5,7 @@ module.exports ={
 	getAllDomains:function(callback){
 		var sql = "select * from domain";
 		db.getResult(sql, null, function(results){
-			if(results.length > 0){
-				callback(results);
-			}else{
-				callback(null);
-			}
+			callback(results);
 		});
 	},
 
@@ -35,15 +31,25 @@ module.exports ={
 		});
 	},
 
-	getAllDomains:function(callback){
-		var sql = "select * from domain";
-		db.getResult(sql, null, function(results){
-			if(results.length > 0){
-				callback(results);
+	updateDomain: function(domain, callback){
+		var sql = "update domain set name=? where id=?";
+		db.execute(sql, [domain.name, domain.id], function(status){
+			if(status){
+				callback(true);
 			}else{
-				callback(null);
+				callback(false);
 			}
 		});
 	},
 
+	deleteDomain: function(id, callback){
+		var sql = "delete from domain where id=?";
+		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 }
