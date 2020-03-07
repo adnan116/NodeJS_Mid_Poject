@@ -110,4 +110,15 @@ module.exports ={
 			}
 		});
 	},
+
+	approveStudent: function(id, callback){
+		var sql = "update students set status = 'active' where userid=?";
+		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 }
